@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Univers Freebox",
+    "url": "https://www.universfreebox.com/feed",
+    "note": "Spécialisé Free mais couvre largement les annonces concurrence"
+  },
+  {
+    "name": "FrAndroid",
+    "url": "https://www.frandroid.com/feed",
+    "note": "Couvre tous opérateurs mobile + box"
+  },
+  {
+    "name": "ZoneADSL",
+    "url": "https://www.zoneadsl.com/rss.xml",
+    "note": "Actualités box internet et fibre"
+  },
+  {
+    "name": "Ariase",
+    "url": "https://www.ariase.com/actualites/rss",
+    "note": "Comparateur télécom — section actu offres"
+  },
+  {
+    "name": "Tom's Guide FR",
+    "url": "https://www.tomsguide.fr/feed/",
+    "note": "Section télécom/mobile"
+  }
+]
