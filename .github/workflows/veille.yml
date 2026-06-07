@@ -1,0 +1,36 @@
+name: Veille ALLEGEO Télécom
+
+on:
+  schedule:
+    # 8h00 Paris (= 6h UTC heure d'été, 7h UTC heure d'hiver)
+    # On met 6h UTC : ça tombera à 8h en été, 7h en hiver — acceptable
+    - cron: '0 6 * * *'
+  workflow_dispatch:  # permet de lancer manuellement depuis l'interface GitHub
+
+jobs:
+  veille:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run veille
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        run: python veille_telecom.py
